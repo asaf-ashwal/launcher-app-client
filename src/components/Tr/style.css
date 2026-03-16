@@ -1,0 +1,15 @@
+tr td button{
+    padding: 3px 6px;
+    border-radius: 10px;
+    background-color: rgba(10, 10, 10, 0.078);
+}
+tr td button:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+tr td {
+    padding: 10px 0;
+    text-align: center;
+    border: 1px solid black;
+font-size: larger;
+}

@@ -1,0 +1,36 @@
+table {
+    width: 100vw;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table tr:nth-of-type(odd) {
+    background-color: rgb(165, 234, 222);
+}
+
+table tr:nth-of-type(even) {
+    background-color: rgb(171, 223, 129);
+}
+
+table tr:hover {
+    background-color: rgba(78, 78, 78, 0.089);
+}
+
+table tr th {
+    text-align: center;
+    padding: 10px 0;
+    border: 1px solid black;
+    font-size: larger;
+}
+
+nav>button {
+    font-size: larger;
+    padding: 10px;
+    margin: 15px;
+    border-radius: 10px;
+}
+
+nav>button:hover {
+    transform: scale(1.1);
+    background-color: rgba(0, 0, 0, 0.144);
+}
