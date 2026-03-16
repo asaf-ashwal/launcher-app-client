@@ -1,0 +1,82 @@
+.form-section {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-section form {
+    border: 2px solid rgb(82, 82, 82);
+    border-radius: 10px;
+    background-color: rgba(201, 201, 201, 0.384);
+    width: 30%;
+    min-width: 350px;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.form-section form input {
+    display: block;
+    width: 100%;
+    min-width: 300px;
+    height: 2rem;
+    border-radius: 4px;
+    padding: 0 4px;
+}
+
+.form-section form input:hover {
+    background-color: rgb(220, 220, 220);
+}
+
+.form-section form button:hover {
+    background-color: rgb(220, 220, 220);
+
+    transform: scale(1.1);
+}
+
+.form-section form button {
+    padding: 6px 14px;
+    border-radius: 18px;
+    font-size: large;
+}
+
+select {
+    padding: 5px;
+}
+
+.form-error {
+    font-size: xx-large;
+    color: red;
+    background-color: rgb(185, 2, 2);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.good {
+    font-size: xx-large;
+    color: greenyellow;
+    background-color: rgb(120, 179, 32);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.home-butt {
+    font-size: larger;
+    padding: 10px;
+    margin: 15px;
+    border-radius: 10px;
+}
+
+
+.home-butt:hover {
+    transform: scale(1.1);
+    background-color: rgba(0, 0, 0, 0.144);
+}

@@ -1,0 +1,38 @@
+.lacher-page {
+    width: 100vw;
+    height: 100vh;
+}
+
+.lacher-page form {
+    margin: auto;
+    padding: 15px 0;
+    width: 80%;
+    /* height: 100%; */
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0 10px;
+    justify-content: center;
+    font-size: larger;
+}
+
+.lacher-page form input {
+    display: block;
+    width: 100%;
+    height: 3rem;
+    font-size: large;
+}
+
+.lacher-page form button {
+    font-size: large;
+    width: 6rem;
+    border-radius: 18px;
+    height: 2.5rem;
+margin-left: 2rem;
+}
+
+.lacher-page form button:hover{
+    background-color: rgb(222, 219, 219);
+    transform: scale(1.1);
+}

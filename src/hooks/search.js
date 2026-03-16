@@ -19,6 +19,9 @@ export function useSearch(data) {
     );
     setDataToShow(res);
   };
+  const reset = () => {
+    setDataToShow(data);
+  };
 
-  return {dataToShow, searchByCity, searchBytype};
+  return {dataToShow, searchByCity, searchBytype, reset};
 }
