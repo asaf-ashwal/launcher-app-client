@@ -14,23 +14,30 @@ function index() {
 
   useEffect(() => {
     async function getData() {
-      const {data, status} = await axios.get(
-        "http://localhost:3000/api/launchers/",
-      );
-      if (status !== 200) setErr("server error");
-      setLauchers(data);
+      try {
+        const {data, status} = await axios.get(
+          "http://localhost:3000/api/launchers/",
+        );
+        setLauchers(data);
+      } catch (error) {
+        console.log(error);
+        setErr(error.message);
+      }
     }
     getData();
   }, []);
+  console.log("from index: ", dataToShow.length);
+
   return (
     <>
       <nav>
         <Search func={searchByCity} placeholder={"enter city..."} />
         <Search func={searchBytype} placeholder={"enter type..."} />
         <button>
-          <Link to='/addLauncher'>Add Launcher</Link>
+          <Link to="/addLauncher">Add Launcher</Link>
         </button>
       </nav>
+      {err && <p className="error">{err}</p>}
       <table>
         <tr>
           <th>id</th>
@@ -41,9 +48,9 @@ function index() {
           <th>name</th>
           <th>Nav</th>
         </tr>
-        {dataToShow.map((laucher) => (
-          <Tr key={laucher.name} laucher={laucher} />
-        ))}
+        {dataToShow.map((laucher) => {
+          return <Tr key={laucher.id} laucher={laucher} />;
+        })}
       </table>
     </>
   );
