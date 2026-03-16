@@ -26,7 +26,6 @@ function index() {
     }
     getData();
   }, []);
-  console.log("from index: ", dataToShow.length);
 
   return (
     <>

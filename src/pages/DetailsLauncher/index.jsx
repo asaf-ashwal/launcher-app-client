@@ -24,7 +24,6 @@ export default function index() {
         );
         setLaucherData(data);
         setFormData(data);
-        console.log(laucherData);
       } catch (error) {
         console.log(error);
       }

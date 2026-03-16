@@ -2,6 +2,7 @@ import React, {useRef, useState} from "react";
 import "./style.css";
 import axios from "axios";
 import {Link} from "react-router";
+import InputAndLable from '../../components/InputAndLable/index'
 
 function index() {
   const cityRef = useRef(null);
@@ -14,8 +15,6 @@ function index() {
   async function handlesubmit(e) {
     try {
       e.preventDefault();
-      // console.log('satar');
-
       const formData = {
         city: cityRef.current.value,
         rocketType: rocketTypeRef.current.value,
@@ -58,51 +57,19 @@ function index() {
             <option value="Fetah110">Fetah110</option>
             <option value="Shahab3">Shahab3</option>
           </select>
-          <label htmlFor="city">
-            city:
-            <input
-              required
-              ref={cityRef}
-              id="city"
-              type="text"
-              placeholder="Enter city..."
-            />
-          </label>
 
-          <label htmlFor="latitude">
-            latitude:
-            <input
-              required
-              ref={latitudeRef}
-              min={0}
-              id="latitude"
-              type="number"
-              placeholder="Enter latitude..."
-            />
-          </label>
-
-          <label htmlFor="longitude">
-            longitude:
-            <input
-              required
-              ref={longitudeRef}
-              min={0}
-              id="longitude"
-              type="number"
-              placeholder="Enter longitude..."
-            />
-          </label>
-
-          <label htmlFor="name">
-            name:
-            <input
-              required
-              ref={nameRef}
-              id="name"
-              type="text"
-              placeholder="Enter name..."
-            />
-          </label>
+          <InputAndLable message={"Enter city..."} name={"city"} ref={cityRef} />
+          <InputAndLable
+            message={"Enter latitude..."}
+            name={"latitude"}
+            ref={latitudeRef}
+          />
+          <InputAndLable
+            message={"Enter longitude..."}
+            name={"longitude"}
+            ref={longitudeRef}
+          />
+          <InputAndLable message={"Enter name..."} name={"name"} ref={nameRef} /> 
 
           <button type="submit">Submit</button>
         </form>
