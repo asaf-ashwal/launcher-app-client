@@ -11,7 +11,6 @@ import ErrorPage from "./pages/ErrorPage/index";
 import {useUserinfo} from "./hooks/useUserInfo";
 function Router() {
   const {user} = useUserinfo();
-  // console.log(user);
 
   return (
     <Routes>

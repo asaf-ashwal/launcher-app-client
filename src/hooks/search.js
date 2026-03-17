@@ -23,9 +23,6 @@ export function useSearch(data) {
     setDataToShow(data);
   };
   const searchByDestroyed = (mode) => {
-    console.log(data[0].destroyed, data[1].destroyed, data[2].destroyed);
-console.log(mode);
-
     setDataToShow(
       mode === "all" ? data : data.filter((v) => `${v.destroyed}` === mode),
     );

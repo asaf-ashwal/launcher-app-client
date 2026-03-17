@@ -23,8 +23,11 @@ function index() {
         if (!data) navigate("errorPage");
         setFormData(data);
       } catch (error) {
-        console.log(error);
-        // navigate("/errorPage");
+        console.log(error.message);
+        setMessage({class: "form-error", message: error.message});
+        setTimeout(() => {
+          setMessage({message: "", class: ""});
+        }, 4000);
       }
     }
     getData();
@@ -44,6 +47,7 @@ function index() {
         setMessage({message: "", class: ""});
       }, 4000);
     } catch (error) {
+      console.log(error.message);
       setMessage({class: "form-error", message: error.message});
       setTimeout(() => {
         setMessage({message: "", class: ""});
@@ -95,7 +99,7 @@ function index() {
         </label>
 
         <button type="submit">Submit changes</button>
-      {message.message && <p className={message.class}>{message.message}</p>}
+        {message.message && <p className={message.class}>{message.message}</p>}
       </form>
     </section>
   );

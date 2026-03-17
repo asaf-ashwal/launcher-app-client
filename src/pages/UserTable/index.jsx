@@ -6,7 +6,6 @@ import {Link} from "react-router";
 
 function index() {
   const [users, setUsers] = useState([]);
-  const [message, setMessage] = useState({});
   const token = useUserinfo((state) => state.token);
 
   useEffect(() => {
@@ -17,13 +16,9 @@ function index() {
           {headers: {token}},
         );
         setUsers(data);
-        setMessage({class: "good", message: "laucher added secssasfuly"});
-        setTimeout(() => {
-          setMessage({message: "", class: ""});
-        }, 4000);
       } catch (error) {
         console.log(error);
-        // setErr(error.message);
+        setErr(error.message);
       }
     }
     getData();
@@ -37,7 +32,7 @@ function index() {
       );
       setUsers(users.filter((user) => user.id !== id));
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   }
   return (
