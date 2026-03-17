@@ -32,6 +32,10 @@ export const useUserinfo = create(
           }, 4000);
         } catch (err) {
           console.error(err.message);
+          setMessage({class: "form-error", message: err.message});
+          setTimeout(() => {
+            setMessage({message: "", class: ""});
+          }, 4000);
           set({error: err.message});
         } finally {
           set({isLoading: false});
