@@ -1,0 +1,22 @@
+header {
+    width: 100vw;
+}
+
+header nav {
+    height: 5rem;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+header button {
+    padding: 6px 14px;
+    border-radius: 15px;
+    font-size: large;
+}
+
+header button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
