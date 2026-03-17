@@ -2,4 +2,23 @@
     border: 2px solid black;
     border-radius: 15px;
     padding: 20px;
+    font-size: larger;
+}
+.laucher-page p span{
+font-size: larger;
+font-weight: 600;
+}
+.laucher-page p{
+    margin: 5px;
+}
+.laucher-page button{
+    margin-top: 10px;
+    margin-right: 10px;
+     padding: 6px 14px;
+    border-radius: 15px;
+    font-size: large;
+}
+
+.laucher-page button:hover{transform: scale(1.1);
+    cursor: pointer;
 }
