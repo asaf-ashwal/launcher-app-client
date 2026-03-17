@@ -65,11 +65,21 @@ function index() {
     <section className="form-section">
       <section className="laucher-page">
         <h1>laucher name:{laucherData.name}</h1>
-        <p>Id: {laucherData.id}</p>
-        <p>City: {laucherData.city}</p>
-        <p>rocketType: {laucherData.rocketType}</p>
-        <p>latitude: {laucherData.latitude}</p>
-        <p>longitude: {laucherData.longitude}</p>
+        <p>
+          <span>Id:</span> {laucherData.id}
+        </p>
+        <p>
+          <span>City:</span> {laucherData.city}
+        </p>
+        <p>
+          <span>rocketType:</span> {laucherData.rocketType}
+        </p>
+        <p>
+          <span>latitude:</span> {laucherData.latitude}
+        </p>
+        <p>
+          <span>longitude:</span> {laucherData.longitude}
+        </p>
         {(user?.user_type === "admin" || user?.user_type === "airForce") && (
           <button onClick={handleDestroyed}>destroyed</button>
         )}
