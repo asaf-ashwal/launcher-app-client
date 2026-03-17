@@ -4,19 +4,22 @@ import axios from "axios";
 import {useSearch} from "../../hooks/search";
 import Tr from "../../components/Tr/index";
 import Search from "../../components/Search/index";
-import {Link} from "react-router";
+import {Link, useNavigate} from "react-router";
+import {useUserinfo} from "../../hooks/useUserInfo";
 
 function index() {
+  const token = useUserinfo((state) => state.token);
   const [lauchers, setLauchers] = useState([]);
   const [err, setErr] = useState("");
 
   const {dataToShow, searchByCity, searchBytype} = useSearch(lauchers);
-
+  const navigation = useNavigate();
   useEffect(() => {
     async function getData() {
       try {
         const {data, status} = await axios.get(
           "http://localhost:3000/api/launchers/",
+          {headers: {token}},
         );
         setLauchers(data);
       } catch (error) {
@@ -32,10 +35,8 @@ function index() {
       <nav>
         <Search func={searchByCity} placeholder={"enter city..."} />
         <Search func={searchBytype} placeholder={"enter type..."} />
-        <button>
-          <Link to="/addLauncher">Add Launcher</Link>
-        </button>
       </nav>
+      <h1> All lauchers</h1>
       {err && <p className="error">{err}</p>}
       <table>
         <tr>
@@ -48,7 +49,14 @@ function index() {
           <th>Nav</th>
         </tr>
         {dataToShow.map((laucher) => {
-          return <Tr key={laucher.id} laucher={laucher} />;
+          return (
+            <Tr
+              key={laucher.id}
+              func={(id) => navigation(`/${id}`)}
+              data={laucher}
+              text="nviget to lacher"
+            />
+          );
         })}
       </table>
     </>
