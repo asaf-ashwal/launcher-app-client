@@ -5,6 +5,8 @@ import {useUserinfo} from "../../hooks/useUserInfo";
 import "./style.css";
 
 function index() {
+  const [message, setMessage] = useState({message: "", class: ""});
+
   const token = useUserinfo((state) => state.token);
   const user = useUserinfo((state) => state.user);
   const navigate = useNavigate();
@@ -18,29 +20,47 @@ function index() {
           `http://localhost:3000/api/launchers/${id}`,
           {headers: {token}},
         );
-        // if (!data) navigate("errorPage");
         setLaucherData(data);
-        // setFormData(data);
       } catch (error) {
         console.log(error);
-        // navigate("/errorPage");
       }
     }
     getData();
   }, []);
   async function handleDelete(e) {
-     try {
-       await axios.delete(`http://localhost:3000/api/launchers/${id}`, {
-         headers: {token},
-       });
-       navigate("/seeLaunchers");
-     } catch (error) {
-       setMessage({class: "form-error", message: error.message});
-       setTimeout(() => {
-         setMessage({message: "", class: ""});
-       }, 4000);
-     }
-   }
+    try {
+      await axios.delete(`http://localhost:3000/api/launchers/${id}`, {
+        headers: {token},
+      });
+      navigate("/seeLaunchers");
+    } catch (error) {
+      setMessage({class: "form-error", message: error.message});
+      setTimeout(() => {
+        setMessage({message: "", class: ""});
+      }, 4000);
+    }
+  }
+  async function handleDestroyed(e) {
+    try {
+      console.log(token);
+      await axios.put(
+        `http://localhost:3000/api/launchers/destroyed/${id}`,
+        {},
+        {
+          headers: {token},
+        },
+      );
+      setMessage({class: "good", message: "Update True"});
+      setTimeout(() => {
+        setMessage({message: "", class: ""});
+      }, 4000);
+    } catch (error) {
+      setMessage({class: "form-error", message: error.message});
+      setTimeout(() => {
+        setMessage({message: "", class: ""});
+      }, 4000);
+    }
+  }
   return (
     <section className="form-section">
       <section className="laucher-page">
@@ -50,7 +70,9 @@ function index() {
         <p>rocketType: {laucherData.rocketType}</p>
         <p>latitude: {laucherData.latitude}</p>
         <p>longitude: {laucherData.longitude}</p>
-        <button></button>
+        {(user?.user_type === "admin" || user?.user_type === "airForce") && (
+          <button onClick={handleDestroyed}>destroyed</button>
+        )}
         {(user?.user_type === "admin" || user?.user_type === "modiin") && (
           <>
             <Link to={`/update/${laucherData.id}`}>
@@ -59,6 +81,7 @@ function index() {
             <button onClick={handleDelete}>Delete laucher</button>
           </>
         )}
+        {message.message && <p className={message.class}>{message.message}</p>}
       </section>
     </section>
   );

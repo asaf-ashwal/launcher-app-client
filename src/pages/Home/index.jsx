@@ -12,7 +12,8 @@ function index() {
   const [lauchers, setLauchers] = useState([]);
   const [err, setErr] = useState("");
 
-  const {dataToShow, searchByCity, searchBytype} = useSearch(lauchers);
+  const {dataToShow, searchByCity, searchBytype, searchByDestroyed} =
+    useSearch(lauchers);
   const navigation = useNavigate();
   useEffect(() => {
     async function getData() {
@@ -21,6 +22,8 @@ function index() {
           "http://localhost:3000/api/launchers/",
           {headers: {token}},
         );
+        console.log(data);
+
         setLauchers(data);
       } catch (error) {
         console.log(error);
@@ -35,6 +38,11 @@ function index() {
       <nav>
         <Search func={searchByCity} placeholder={"enter city..."} />
         <Search func={searchBytype} placeholder={"enter type..."} />
+        <select onChange={(e)=>searchByDestroyed(e.target.value)}>
+          <option value="all">all</option>
+          <option value={true}>destroyed</option>
+          <option value={false}>not destroyed</option>
+        </select>
       </nav>
       <h1> All lauchers</h1>
       {err && <p className="error">{err}</p>}
@@ -46,6 +54,7 @@ function index() {
           <th>latitude</th>
           <th>longitude</th>
           <th>name</th>
+          <th>destroyed</th>
           <th>Nav</th>
         </tr>
         {dataToShow.map((laucher) => {

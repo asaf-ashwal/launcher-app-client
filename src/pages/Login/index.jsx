@@ -9,14 +9,17 @@ function index() {
   const setLogin = useUserinfo((state) => state.setLogin);
 
   function handlesubmit(e) {
-    e.preventDefault();
-    const formData = {
-      username: usernameRef.current.value,
-      password: passwordRef.current.value,
-    };
-    // console.log(setLogin);
-    
-    setLogin(formData, setMessage);
+    try {
+      e.preventDefault();
+      const formData = {
+        username: usernameRef.current.value,
+        password: passwordRef.current.value,
+      };
+
+      setLogin(formData, setMessage);
+      usernameRef.current.value = "";
+      passwordRef.current.value = "";
+    } catch (error) {}
   }
   return (
     <section className="form-section">
@@ -33,8 +36,8 @@ function index() {
           ref={passwordRef}
         />
         <button type="submit">Subnit</button>
+        {message.message && <p className={message.class}>{message.message}</p>}
       </form>
-      {message.message && <p className={message.class}>{message.message}</p>}
     </section>
   );
 }
